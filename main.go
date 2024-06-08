@@ -15,7 +15,12 @@ func main() {
 	// defining the array
 	// var bookings = [50]string{"Mahesh", "Shruthi"}
 	// var bookings [50]string
-	var bookings [conferenceTickets]string
+	// var bookings [conferenceTickets]string
+
+	//slice: is like dynamic array/arrayList
+	// var bookings []string
+	// var bookings = []string{}
+	bookings := []string{}
 
 	fmt.Printf("Welcome to %v booking application\n", conferenceName)
 	fmt.Printf("We have total of %v tickets and %v are still available.\n", conferenceTickets, remainingTickets)
@@ -43,12 +48,13 @@ func main() {
 
 	remainingTickets -= noOfTickets
 
-	bookings[0] = firstName + " " + lastName
+	// bookings[0] = firstName + " " + lastName
+	bookings = append(bookings, firstName+" "+lastName)
 
-	fmt.Printf("The whole array: %v\n", bookings)
+	fmt.Printf("The whole slice: %v\n", bookings)
 	fmt.Printf("The first value: %v\n", bookings[0])
-	fmt.Printf("Array type: %T\n", bookings)
-	fmt.Printf("Array length: %v\n", len(bookings))
+	fmt.Printf("Slice type: %T\n", bookings)
+	fmt.Printf("Slice length: %v\n", len(bookings))
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v \n", firstName, lastName, noOfTickets, email)
 
