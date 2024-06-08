@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 
@@ -16,12 +18,27 @@ func main() {
 
 	// fmt.Printf("Type of conferenceName %T\n", conferenceName)
 
-	var userName string
-	var userTickets int
+	var firstName string
+	var lastName string
+	var email string
+	var noOfTickets uint
 
 	// ask user his name
-	userName = "Mahesh"
-	userTickets = 2
+	fmt.Print("Enter your first name:")
+	fmt.Scan(&firstName)
 
-	fmt.Printf("User %v booked %v tickets.\n", userName, userTickets)
+	fmt.Print("Enter your last name:")
+	fmt.Scan(&lastName)
+
+	fmt.Print("Enter your email:")
+	fmt.Scan(&email)
+
+	fmt.Print("Enter number of tickets:")
+	fmt.Scan(&noOfTickets)
+
+	remainingTickets -= noOfTickets
+
+	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v \n", firstName, lastName, noOfTickets, email)
+
+	fmt.Printf("%v remaining tickets for %v\n", remainingTickets, conferenceName)
 }
