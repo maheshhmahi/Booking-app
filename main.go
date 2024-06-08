@@ -12,6 +12,11 @@ func main() {
 	const conferenceTickets = 50
 	var remainingTickets uint = 50
 
+	// defining the array
+	// var bookings = [50]string{"Mahesh", "Shruthi"}
+	// var bookings [50]string
+	var bookings [conferenceTickets]string
+
 	fmt.Printf("Welcome to %v booking application\n", conferenceName)
 	fmt.Printf("We have total of %v tickets and %v are still available.\n", conferenceTickets, remainingTickets)
 	fmt.Println("Get your tickets here to attend")
@@ -37,6 +42,13 @@ func main() {
 	fmt.Scan(&noOfTickets)
 
 	remainingTickets -= noOfTickets
+
+	bookings[0] = firstName + " " + lastName
+
+	fmt.Printf("The whole array: %v\n", bookings)
+	fmt.Printf("The first value: %v\n", bookings[0])
+	fmt.Printf("Array type: %T\n", bookings)
+	fmt.Printf("Array length: %v\n", len(bookings))
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v \n", firstName, lastName, noOfTickets, email)
 
