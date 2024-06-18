@@ -3,14 +3,18 @@ package main
 import (
 	"booking-app/helper"
 	"fmt"
-	"strings"
+	"strconv"
 )
 
 const conferenceTickets int = 50
 
 var conferenceName = "Go Conference"
 var remainingTickets uint = 50
-var bookings = []string{}
+
+// var bookings = []string{}
+
+// creating list of bookings of map. we need to initialize the size first
+var bookings = make([]map[string]string, 0)
 
 func main() {
 
@@ -72,8 +76,7 @@ func getFirstNames() []string {
 	firstNames := []string{}
 
 	for _, booking := range bookings {
-		fName := strings.Split(booking, " ")
-		firstNames = append(firstNames, fName[0])
+		firstNames = append(firstNames, booking["firstName"])
 	}
 
 	return firstNames
@@ -104,8 +107,14 @@ func getUserInputs() (string, string, string, uint) {
 func bookTicket(remainingTickets uint, noOfTickets uint, firstName string, lastName string, email string) {
 	remainingTickets -= noOfTickets
 
-	// bookings[0] = firstName + " " + lastName
-	bookings = append(bookings, firstName+" "+lastName)
+	//create user map
+	var user = make(map[string]string)
+	user["firstName"] = firstName
+	user["lastName"] = lastName
+	user["email"] = email
+	user["numOfTickets"] = strconv.FormatUint(uint64(noOfTickets), 10)
+
+	bookings = append(bookings, user)
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v \n", firstName, lastName, noOfTickets, email)
 
