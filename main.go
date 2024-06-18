@@ -23,11 +23,9 @@ func main() {
 	// var bookings = []string{}
 	bookings := []string{}
 
-	fmt.Printf("Welcome to %v booking application\n", conferenceName)
-	fmt.Printf("We have total of %v tickets and %v are still available.\n", conferenceTickets, remainingTickets)
-	fmt.Println("Get your tickets here to attend")
-
 	// fmt.Printf("Type of conferenceName %T\n", conferenceName)
+
+	greeUsers(conferenceName, conferenceTickets, remainingTickets)
 
 	for {
 		var firstName string
@@ -62,13 +60,8 @@ func main() {
 
 			fmt.Printf("%v remaining tickets for %v\n", remainingTickets, conferenceName)
 
-			firstNames := []string{}
-
-			for _, booking := range bookings {
-				fName := strings.Split(booking, " ")
-				firstNames = append(firstNames, fName[0])
-			}
-
+			//call print first names
+			firstNames := getFirstNames(bookings)
 			fmt.Printf("These first names of our bookings: %v\n", firstNames)
 
 			if remainingTickets == 0 {
@@ -85,9 +78,24 @@ func main() {
 			if !isValidTicketNumber {
 				fmt.Println("number of tickets you entered is wrong")
 			}
-
 		}
+	}
+}
 
+func greeUsers(conferenceName string, conferenceTickets int, remainingTickets uint) {
+	fmt.Printf("Welcome to %v booking application\n", conferenceName)
+	fmt.Printf("We have total of %v tickets and %v are still available.\n", conferenceTickets, remainingTickets)
+	fmt.Println("Get your tickets here to attend")
+
+}
+
+func getFirstNames(bookings []string) []string {
+	firstNames := []string{}
+
+	for _, booking := range bookings {
+		fName := strings.Split(booking, " ")
+		firstNames = append(firstNames, fName[0])
 	}
 
+	return firstNames
 }
